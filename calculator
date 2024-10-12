@@ -1,0 +1,55 @@
+import math
+
+# Print the initial information about the calculator.
+print("Welcome to the financial calculator.")
+print("Choose either 'investment' or 'bond' from the menu below to proceed:\n")
+print("investment\t- to calculate the amount of interest you'll earn on investment")
+print("bond\t\t- to calculate the amount you'll have to pay on a home loan")
+
+# Request for user to input calculation type and it transformed to lowercase.
+calc = input("\nEnter investment or bond - type investment/bond: ").lower()
+print(calc)
+
+# ascertain which type entered and if it was correctly entered.
+# If investment is chosen, user is asked to input 
+# variables required to calculate this investment are declared
+if calc == "investment":
+    deposit = float(input("\nPlease enter the amount of money that you are depositing: "))
+
+    rate = float(input("Please enter the interest rate as a percentage: "))
+
+    n = float(input("Please enter the number of years you plan to invest: "))
+
+    interest = input("Please enter if you want simple or compound interest - type simple/compound: ").lower()
+
+# investment on basis of user input and
+#  answer printed  and rounded to two digits.
+    if interest == "simple":
+        answer = round((deposit * (1 + rate/100 * n)), 2)
+
+        print(f"\nYour investment will be worth R{answer} after {n} years.")
+
+    elif interest == "compound":
+        compound_interest = round(deposit_amount* math.pow((1 + interest_rate/100), num_years), 2)
+        print()
+        print("After {} years of investing at {}% interest rate, you will earn R{}.".format(num_years, interest_rate, compound_interest))  
+
+# second conditional structure as bond calculator.
+#  input on house value from user, interest rate and number of months taken to pay bond, thst is input to bond calculator.
+elif calculation_type == "bond":
+    
+    house_value = int(input("Please enter the present value of the house: \n"))
+    interest_rate = int(input("Please enter your interest rate as a number (e.g. 1, 2, 3 etc.): \n"))
+    num_months = int(input("Please enter the number of months you plan to take to repay the bond: \n"))
+    
+#  bond calculator formula.    
+    monthly_payment = round((interest_rate/100/12 * house_value) / (1 - math.pow((1+ interest_rate/100/12), (-1 * num_months))), 2)
+
+#  monthly payment results displayed.  
+    print("Your monthly repayment amount for the home loan is equal to R{}.".format(monthly_payment))
+
+#  error message if non entry  of either 'investment' or 'bond' choice.
+# Tthe same conditional statements with the if and elif  and their respective actions are repeated to receive input for the investment and bond calculator.
+else:
+    print("You have made an incorrect selection. Please choose either 'investment' or 'bond'.")
+  
